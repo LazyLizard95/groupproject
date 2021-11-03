@@ -12,17 +12,12 @@
     --green: rgb(132,189,151)
 }
 
-:target {
-    background-color: var(--highlight);
-  }
 
 /* apply styles to <header> */
 header {
-    display: flex;
-    justify-content: space-between;  
-    flex-wrap: wrap;
+    
     padding: 20px 35px;
-    background-color: var(--background);
+    background-color: black;
     font-family:Arial, Helvetica, sans-serif;
     position: sticky;
     top:0;
@@ -32,6 +27,7 @@ header {
     background-position: 80%;
     position: -webkit-sticky;
     z-index: 9999;
+    
 }
 /*media style to fix header on smaller screen */
 @media screen and (max-width: 600px) {
@@ -43,23 +39,12 @@ header {
 
 .name {
     font-size: 1.50vw;
-    color:var(--textcolor);
-}
-
-.title {
-    font-size: 1.75vw;
-    color:var(--highlight);
-    font-family: fantasy;
-}
-.lastname {
-    font-size: 1.90vw;
-    color: var(--textcolor);
+    color:white;
 }
 
 header nav {
-    display: flex;
-    flex-wrap: wrap;
     margin: 7px 0;
+    float: right;
 }
 
 header nav ul {
@@ -68,6 +53,9 @@ header nav ul {
     justify-content: space-between;
     align-items:center;
     list-style: none;
+    float: right;
+    
+   
 }
 
 header nav ul li a {
@@ -76,16 +64,15 @@ header nav ul li a {
     padding: 10px 15px;
     font-weight: lighter;
     font-size: 1.55vw;
-    color:var(--textcolor);
+    color: white;
+    
+    
 }
 
 
 header ul li a:hover {
     color: #fff;
     background-color: var(--red);
-}
-body{
-    background-color: var(--green);
 }
 
 /*About Me Section*/
