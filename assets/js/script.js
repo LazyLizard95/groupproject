@@ -23,7 +23,13 @@ taskButton.addEventListener("click", function(){
       })
       .then(function (response) {
         for(i =0; i < response.items.length; i++) {
-          taskContainer.append(JSON.parse("response", response.items[i]));
+          var links = document.createElement("div");
+
+          links.innerHTML = response.items[i].link + '<br>';
+          taskContainer.append(links);
+          // taskContainer.append(response.items[i].link);
+          console.log(response.items[i].link);
+
         }
         
         // document.getElementById("displayText").href = response.items[0].link;
