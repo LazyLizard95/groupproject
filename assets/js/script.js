@@ -17,13 +17,23 @@ taskButton.addEventListener("click", function(){
       
       document.getElementById("displayText").innerText = activity;
   
-   testGoogle  = fetch('https://www.googleapis.com/customsearch/v1?key=AIzaSyAKzE32n6Ad0lWIE3hOhOeYWyMbOoQ0PyE&q=' +activity+ '&cx=6a0eab11f4f52b42f')
+   testGoogle  = fetch('https://www.googleapis.com/customsearch/v1?key=AIzaSyAMyF69ErI_ssDgFwmw2UFM8ia0cpRyRsM&q=' +activity+ '&cx=6a0eab11f4f52b42f')
     .then(function (response) {
         return response.json();
       })
       .then(function (response) {
+        //debugger;
         for(i =0; i < response.items.length; i++) {
-          taskContainer.append(JSON.parse("response", response.items[i]));
+          var links = document.createElement("div");
+          //var aTag = document.createElement("a");
+          var linkItems = response.items[i].link;
+          var linkTitles = response.items[i].title;
+          links.innerHTML ='<br>' + '<a href=' +linkItems+ '>' + linkTitles;
+          taskContainer.append(links);
+          
+          // taskContainer.append(response.items[i].link);
+          console.log(response.items[i].link);
+
         }
         
         // document.getElementById("displayText").href = response.items[0].link;
@@ -33,6 +43,7 @@ taskButton.addEventListener("click", function(){
 
 
 })
+
 
  
 
