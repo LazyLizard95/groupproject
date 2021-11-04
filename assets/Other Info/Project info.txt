@@ -1,0 +1,11 @@
+Project title / Description
+
+Repo config
+
+User Story
+
+Wireframe or sketch of the design
+
+APIs identified
+
+Issues created and assigned (Roles & Responsibilities)

@@ -1,0 +1,8 @@
+User story:
+
+As a directionless individual.
+I would like someone to suggest me things. 
+So that I can be more productives.
+
+learn docs for https://developers.google.com/custom-search/v1/using_rest
+and learn for boredapi

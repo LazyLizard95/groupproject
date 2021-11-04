@@ -1,0 +1,387 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+:root{
+    --primary-color:rgb(52, 110, 148);
+    --textcolor: rgb(232, 139, 46);
+    --background: rgb(61,56,69);
+    --highlight: rgb(209,196,73);
+    --red: rgb(240,78,34);
+    --green: rgb(132,189,151)
+}
+
+
+/* apply styles to <header> */
+header {
+    
+    padding: 20px 35px;
+    background-color: black;
+    font-family:Arial, Helvetica, sans-serif;
+    position: sticky;
+    top:0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-position: 80%;
+    position: -webkit-sticky;
+    z-index: 9999;
+    
+}
+/*media style to fix header on smaller screen */
+@media screen and (max-width: 600px) {
+    header {
+       position:static;
+ 
+     }
+   }
+
+.name {
+    font-size: 1.50vw;
+    color:white;
+}
+
+header nav {
+    margin: 7px 0;
+    float: right;
+}
+
+header nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items:center;
+    list-style: none;
+    float: right;
+    
+   
+}
+
+header nav ul li a {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 15px;
+    font-weight: lighter;
+    font-size: 1.55vw;
+    color: white;
+    
+    
+}
+
+
+header ul li a:hover {
+    color: #fff;
+    background-color: var(--red);
+}
+
+/*About Me Section*/
+.aboutme{
+    margin-top: 50px;
+}
+
+
+
+.aboutme h2{
+  
+    color:var(--background);
+    float:left;
+    font-size: 1.75vw;
+    padding-top: 10px;
+    padding-right: 10px;
+    margin-left: 65px;
+    
+}
+
+/*media style to adjust margin on smaller screen */
+@media screen and (max-width: 600px) {
+    .aboutme h2 {
+       margin-left:20px;
+ 
+     }
+   }
+
+/*media style to remove headshot on smaller screen */
+@media screen and (max-width: 600px) {
+   .aboutme img {
+      display: none;
+
+    }
+  }
+
+.aboutme p{
+    display: flex;
+    flex-wrap: wrap;
+    border-left: solid 5px var(--background);
+    color: var(--background);
+    padding: 10px;
+    font-size: 1.55vw;
+    justify-content: right;
+    margin-right: 20px;
+    
+}
+.aboutme img{
+    max-width: 20%;
+    margin-right: 20px;
+    box-shadow: 20px rgb(0, 0, 0);
+    width: 250px;
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 20px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*My Work Section*/
+
+
+.myworkboxes {
+    display: flex;
+    flex-wrap: wrap;  
+}
+
+/*flex boxes and center for smaller screen*/
+@media screen and (max-width: 600px) {
+    .myworkboxes{
+        display:flex;
+        flex-flow: column;
+        justify-content: center;
+
+    }
+   }
+
+
+.mywork h2{
+    color:var(--background);
+    float:left;
+    font-size: 1.75vw;
+    padding-top: 10px;
+    padding-right: 10px;
+    margin-left: 70px;
+    height: 600px;
+    border-right: solid 5px var(--background);
+}
+/* adjust height for media screen */
+@media screen and (max-width: 600px) {
+    .mywork h2 {
+       margin-left:30px;
+       height: 1000px;
+ 
+     }
+   }
+
+/*Mainwork Styles*/
+
+.mainwork {
+    width: 75%;
+    height: 200px;
+    border: solid 5px var(--background);
+    margin-left: 50px;
+    background-image:url("/assets/images/Horiseon.PNG");
+    overflow: clip;  
+}
+/* adjust size for samller screen*/
+@media screen and (max-width: 600px) {
+    .mainwork{
+        width: 50%;
+        height: 200px;
+        overflow: clip; 
+
+    }
+   }
+
+.mainwork h4{
+    color:var(--background);
+    font-size: 1.75vw;
+    background-color: white;
+}
+
+.mainwork img{
+    height: 2000px;
+    width:2000px;
+    z-index: 9999;
+}
+
+.mainwork img:hover{
+    filter:brightness(130%);
+}
+
+/*Box 2 Styles*/
+
+.box2{
+    
+    border: solid 5px var(--background);
+    width: 37.5%;
+    height: 200px;
+    margin-left: 50px;
+    overflow: clip; 
+}
+
+.box2 h4{
+    color:var(--background);
+    font-size: 1.75vw;
+    background-color: white;
+}
+
+.box2 img{
+    height: 2000px;
+    width:2000px;
+    z-index: 9999;
+}
+
+.box2:hover{
+    filter:brightness(130%);
+}
+
+/*Box 3 Styles*/
+
+/*media style to adjust margin on smaller screen */
+@media screen and (max-width: 600px) {
+    .box3{
+        margin-left:50px;
+
+    }
+   }
+
+.box3{
+    border: solid 5px var(--background);
+    width: 37.5%;
+    height: 200px;
+    overflow: clip;
+}
+
+.box3 h4{
+    color:var(--background);
+    font-size: 1.75vw;
+    background-color: white;
+}
+
+.box3 img{
+    height: 500px;
+    width:1000px;
+    z-index: 9999;
+}
+.box3:hover{
+    filter:brightness(130%);
+}
+
+/*Box 4 Styles*/
+
+.box4{
+    border: solid 5px var(--background);
+    width: 37.5%;
+    height: 200px;
+    margin-left: 50px;
+    overflow: clip;
+}
+
+.box4 h4{
+    color:var(--background);
+    font-size: 1.75vw;
+    background-color: white;
+}
+
+.box4 img{
+    height: 500px;
+    width:700px;
+    z-index: 9999;
+}
+
+.box4:hover{
+    filter:brightness(150%);
+}
+
+
+/*Box 5 Styles*/
+/*media style to adjust margin on smaller screen */
+@media screen and (max-width: 600px) {
+    .box5{
+        margin-left:50px;
+
+    }
+   }
+.box5{
+    border: solid 5px var(--background);
+    width: 37.5%;
+    height: 200px;
+    overflow: clip;
+}
+
+.box5 h4{
+    color:var(--background);
+    font-size: 1.75vw;
+    background-color: white;
+}
+.box5 img{
+    height: 500px;
+    width:700px;
+    z-index: 9999;
+}
+
+.box5:hover{
+    filter:brightness(150%);
+}
+
+/*Contact Me Styles*/
+.contactme{
+    margin-top: 50px;
+
+}
+
+
+.contactme h2{
+    color:var(--background);
+    float:left;
+    font-size: 1.75vw;
+    padding-top: 10px;
+    padding-right: 10px;
+    margin-left: 50px;
+    height: 50px;
+    
+}
+/*media style to adjust margin on smaller screen */
+@media screen and (max-width: 600px) {
+    .contactme h2 {
+       margin-left:20px;
+     }
+   }
+
+.contactme p{
+    display: flex;
+    flex-wrap: wrap;
+    border-left: solid 5px var(--background);
+    padding: 10.17px;
+    font-size: 1.55vw;
+    justify-content: right;
+    margin-left: 25px;
+}
+
+/*Contact links*/
+.links{
+    display: flex;
+    flex-wrap: wrap;
+    border-left: solid 5px var(--background);
+    padding: 10.17px;
+    font-size: 1.55vw;
+    height: 50px;
+    justify-content: left;
+}
+
+#links ul {
+    
+    list-style-type: none;
+}
+
+#links ul li { 
+    display: inline; 
+}
+
+#links ul li a {
+    text-decoration: none;
+    padding: .2em 1em;
+    font-size: 1.55vw;
+    color:var(--background);
+    text-decoration: underline;
+  
+}
+
+#links ul li a:hover {
+    color: white;
+    background-color: var(--red);
+}
