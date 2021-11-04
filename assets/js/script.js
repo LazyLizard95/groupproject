@@ -14,10 +14,16 @@ taskButton.addEventListener("click", function(){
       console.log(response);
       activity = response.activity
       console.log(activity);
-      
       document.getElementById("displayText").innerText = activity;
+      activity.toLowerCase(); //converts activity AFTER its been appended for user. 
+      let newStringArray = activity.split(' '); //converts activity string to an array
+      const bannedTerms = ['the', 'a', 'and', 'too', 'or', 'some'] //terms that are checked for within the array so they can be removed for better search results
+      newStringArray = newStringArray.filter(e => bannedTerms.includes(e) === false); //e represents all the elements in a list, => returns the values, e => bannedTerms.includes(e) === false is saying, do not return the elements if they are included in banned terms
+      let cleanedSearch = newStringArray.toString(); //convert the array back to a string
+      
+      
   
-   testGoogle  = fetch('https://www.googleapis.com/customsearch/v1?key=AIzaSyAMyF69ErI_ssDgFwmw2UFM8ia0cpRyRsM&q=' +activity+ '&cx=6a0eab11f4f52b42f')
+   testGoogle  = fetch('https://www.googleapis.com/customsearch/v1?key=AIzaSyAMyF69ErI_ssDgFwmw2UFM8ia0cpRyRsM&q=' +cleanedSearch+ '&cx=6a0eab11f4f52b42f') //the cleaned search is included here
     .then(function (response) {
         return response.json();
       })
@@ -25,18 +31,12 @@ taskButton.addEventListener("click", function(){
         //debugger;
         for(i =0; i < response.items.length; i++) {
           var links = document.createElement("div");
-<<<<<<< HEAD
           //var aTag = document.createElement("a");
           var linkItems = response.items[i].link;
           var linkTitles = response.items[i].title;
           links.innerHTML ='<br>' + '<a href=' +linkItems+ '>' + linkTitles;
           taskContainer.append(links);
           
-=======
-
-          links.innerHTML = response.items[i].link + '<br>';
-          taskContainer.append(links);
->>>>>>> 707fb0323ac3ce8759dba62e4dd57daa9265cf20
           // taskContainer.append(response.items[i].link);
           console.log(response.items[i].link);
 
@@ -55,9 +55,7 @@ taskButton.addEventListener("click", function(){
 
   
 
-//assign a variable for generated activity.
-//append said variable to google search.
-//display activity. 
+
  
 
 
