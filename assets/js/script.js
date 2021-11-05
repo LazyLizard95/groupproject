@@ -25,21 +25,11 @@ taskButton.addEventListener("click", function(){
         //debugger;
         for(i =0; i < response.items.length; i++) {
           var links = document.createElement("div");
-<<<<<<< HEAD
           //var aTag = document.createElement("a");
           var linkItems = response.items[i].link;
           var linkTitles = response.items[i].title;
           links.innerHTML ='<br>' + '<a href=' +linkItems+ '>' + linkTitles;
           taskContainer.append(links);
-          
-=======
-
-          links.innerHTML = response.items[i].link + '<br>';
-          taskContainer.append(links);
->>>>>>> 707fb0323ac3ce8759dba62e4dd57daa9265cf20
-          // taskContainer.append(response.items[i].link);
-          console.log(response.items[i].link);
-
         }
         
         // document.getElementById("displayText").href = response.items[0].link;
