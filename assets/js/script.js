@@ -2,6 +2,7 @@ let displayText = document.querySelector("#displayText").textContent;
 let testGoogle = "";
 let taskButton = document.querySelector("#generate");
 let taskContainer = document.querySelector("#contentContainer");
+var book= [];
 
 
 taskButton.addEventListener("click", function(){
@@ -26,9 +27,10 @@ taskButton.addEventListener("click", function(){
         for(i =0; i < response.items.length; i++) {
           var links = document.createElement("div");
           //var aTag = document.createElement("a");
+          links.setAttribute('class', 'mark');
           var linkItems = response.items[i].link;
           var linkTitles = response.items[i].title;
-          links.innerHTML ='<br>' + '<a href=' +linkItems+ '>' + linkTitles;
+          links.innerHTML ='<a href=' +linkItems+ '>' + linkTitles;
           taskContainer.append(links);
         }
         
@@ -39,6 +41,21 @@ taskButton.addEventListener("click", function(){
 
 
 })
+
+
+$(".mark").on("click", function(event) {
+  var element = event.target;
+  var link = element.getAttribute('href');
+  var title = element.text;
+  book.push({
+      link,
+      title
+  })
+  console.log(book);
+  localStorage.setItem("bookmarked", JSON.stringify(book));
+  debugger;
+  console.log("done");
+});
 
 
  
