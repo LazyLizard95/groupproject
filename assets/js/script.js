@@ -30,7 +30,7 @@ taskButton.addEventListener("click", function(){
           links.setAttribute('class', 'mark');
           var linkItems = response.items[i].link;
           var linkTitles = response.items[i].title;
-          links.innerHTML ='<a href=' +linkItems+ '>' + linkTitles;
+          links.innerHTML ='<a href=' +linkItems+ ' target="_blank">' + linkTitles;
           taskContainer.append(links);
         }
         
