@@ -16,13 +16,14 @@ taskButton.addEventListener("click", function () {
       console.log(activity);
       document.getElementById("displayText").innerText = activity;
       activity.toLowerCase(); //converts activity AFTER its been appended for user. 
-      newStringArray = activity.match(/\b(\w+)\b/g); //this is known as a regular expression or ReGex. Regular expression are a combination of characters that are short hand for parameters that can be matched. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
+      let newStringArray = activity.split(' '); //converts activity string to an array
       const bannedTerms = ['the', 'a', 'and', 'too', 'or', 'some', 'of'] //terms that are checked for within the array so they can be removed for better search results
       newStringArray = newStringArray.filter(e => bannedTerms.includes(e) === false); //e represents all the elements in a list, => returns the values, e => bannedTerms.includes(e) === false is saying, do not return the elements if they are included in banned terms
-      console.log(activity);
+      let cleanedSearch = newStringArray.toString(); //convert the array back to a string
+      console.log(cleanedSearch);
 
 
-      testGoogle = fetch('https://www.googleapis.com/customsearch/v1?key=AIzaSyAMyF69ErI_ssDgFwmw2UFM8ia0cpRyRsM&q=' + activity + '&cx=6a0eab11f4f52b42f') //the activity is included here
+      testGoogle = fetch('https://www.googleapis.com/customsearch/v1?key=AIzaSyAMyF69ErI_ssDgFwmw2UFM8ia0cpRyRsM&q=' + cleanedSearch + '&cx=6a0eab11f4f52b42f') //the cleaned search is included here
         .then(function (response) {
           return response.json();
         })
