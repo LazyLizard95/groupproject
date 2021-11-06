@@ -2,10 +2,12 @@ let displayText = document.querySelector("#displayText").textContent;
 let testGoogle = "";
 let taskButton = document.querySelector("#generate");
 let taskContainer = document.querySelector("#contentContainer");
+let saveMark = document.querySelector("#bookMarkbtn");
+var book = [];
 
 
-taskButton.addEventListener("click", function () {
-
+taskButton.addEventListener("click", function () { 
+  
   testFetch = fetch('http://www.boredapi.com/api/activity/')
     .then(function (response) {
       return response.json();
@@ -22,7 +24,6 @@ taskButton.addEventListener("click", function () {
       let cleanedSearch = newStringArray.toString(); //convert the array back to a string
       console.log(cleanedSearch);
 
-
       testGoogle = fetch('https://www.googleapis.com/customsearch/v1?key=AIzaSyAMyF69ErI_ssDgFwmw2UFM8ia0cpRyRsM&q=' + cleanedSearch + '&cx=6a0eab11f4f52b42f') //the cleaned search is included here
         .then(function (response) {
           return response.json();
@@ -34,39 +35,37 @@ taskButton.addEventListener("click", function () {
             links.classList.add('container');
             var linkItems = response.items[i].link;
             var linkTitles = response.items[i].title;
-            links.innerHTML = '<br>' + '<a href=' + linkItems + '>' + linkTitles;
+            links.innerHTML = '<button id = "bookMarkbtn">save</button> ' + '<a href=' + linkItems + '>' + linkTitles;
             taskContainer.append(links);
-
-
             console.log(response.items[i].link);
-
           }
-
-
           console.log(response);
         })
     })
+});
 
+// $(".bookMarkbtn").on("click", function (e) {
+//       var link = e.target.nextElementSibling.getAttribute("href");
+//       var title = e.target.nextElementSibling.text;
+//       book.push({
+//       link,
+//       title,
+//       });
+//       localStorage.setItem("bookmarked", JSON.stringify(book));
+//       console.log("works");
+// });
+
+saveMark.addEventListener("click", function () { 
+  var link = e.target.nextElementSibling.getAttribute("href");
+      var title = e.target.nextElementSibling.text;
+      book.push({
+      link,
+      title,
+      });
+      localStorage.setItem("bookmarked", JSON.stringify(book));
+      console.log("works");
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //local past generated activity
 //points system
 //task completion streak
