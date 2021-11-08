@@ -1,4 +1,9 @@
 .container {
+    justify-content: center;
+    margin: auto;
+    width: 50%;
+    border: 3px solid;
+    padding: 10px;  
     width: 800px;
     max-width: 80%;
     background-color: white;
