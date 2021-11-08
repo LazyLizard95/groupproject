@@ -4,8 +4,8 @@ let taskButton = document.querySelector("#generate");
 let taskContainer = document.querySelector("#contentContainer");
 let book = [];
 
-taskButton.addEventListener("click", function () {
-
+taskButton.addEventListener("click", function () { 
+  
   testFetch = fetch('http://www.boredapi.com/api/activity/')
     .then(function (response) {
       return response.json();
@@ -21,7 +21,6 @@ taskButton.addEventListener("click", function () {
       newStringArray = newStringArray.filter(e => bannedTerms.includes(e) === false); //e represents all the elements in a list, => returns the values, e => bannedTerms.includes(e) === false is saying, do not return the elements if they are included in banned terms
       let cleanedSearch = newStringArray.toString(); //convert the array back to a string
       console.log(cleanedSearch);
-
 
       testGoogle = fetch('https://www.googleapis.com/customsearch/v1?key=AIzaSyAMyF69ErI_ssDgFwmw2UFM8ia0cpRyRsM&q=' + cleanedSearch + '&cx=6a0eab11f4f52b42f') //the cleaned search is included here
         .then(function (response) {
@@ -41,6 +40,7 @@ taskButton.addEventListener("click", function () {
             var links = document.createElement("div");
             var linkItems = response.items[i].link;
             var linkTitles = response.items[i].title;
+
             links.innerHTML = '<br>' + '<a href=' + linkItems + '>' + linkTitles;
             contentBox[i].append(links);
 
@@ -51,11 +51,10 @@ taskButton.addEventListener("click", function () {
 
           
           
+
         })
     })
-
-
-})
+});
 
 let saveMark = document.getElementById("save");
 console.log(saveMark);
