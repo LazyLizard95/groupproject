@@ -1,10 +1,5 @@
-@font-face { /*load customfont*/
-    font-family: "customFont";
-    src: url('font/Scrabbles.ttf') format('truetype');
-  }
-  
-  .h1 {
-      font-family: "customFont";
+.h1 {
+    font-family: 'scrabble', sans-serif;
       font-size: 50px;
   }
 

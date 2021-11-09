@@ -1,10 +1,5 @@
-@font-face { /*load customfont*/
-  font-family: "customFont";
-  src: url('font/Scrabbles.ttf') format('truetype');
-}
-
 .h1 {
-    font-family: "customFont";
+  font-family: 'scrabble', sans-serif;
     font-size: 50px;
 }
 
@@ -28,3 +23,15 @@
     color: blue;
     outline: none;
   }
+
+.pages .page { /*hides pages*/
+    display: none;
+}
+
+.pages .page.is-active { /*properties for active pages*/
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  column-gap: 20px;
+}
