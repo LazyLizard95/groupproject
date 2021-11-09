@@ -21,7 +21,7 @@ taskButton.addEventListener("click", function () {
       newStringArray = newStringArray.filter(e => bannedTerms.includes(e) === false); //e represents all the elements in a list, => returns the values, e => bannedTerms.includes(e) === false is saying, do not return the elements if they are included in banned terms
       let cleanedSearch = newStringArray.toString(); //convert the array back to a string
 
-      testGoogle = fetch('https://www.googleapis.com/customsearch/v1?key=AIzaSyAMyF69ErI_ssDgFwmw2UFM8ia0cpRyRsM&q=' + cleanedSearch + '&cx=6a0eab11f4f52b42f') //the cleaned search is included here
+      testGoogle = fetch('https://www.googleapis.com/customsearch/v1?key=AIzaSyAKzE32n6Ad0lWIE3hOhOeYWyMbOoQ0PyE&q=' + cleanedSearch + '&cx=6a0eab11f4f52b42f') //the cleaned search is included here
         .then(function (response) {
           return response.json();
         })
@@ -35,11 +35,9 @@ taskButton.addEventListener("click", function () {
           }
             
           for (i = 0; i < response.items.length; i++) {
-            //var links = document.createElement("div");
             var linkItems = response.items[i].link;
             var linkTitles = response.items[i].title;
-            contentContainer[i].innerHTML = '<br>' + '<a href=' + linkItems + '>' + linkTitles;
-            contentBox[i].append(links);
+            contentBox[i].innerHTML = '<br>' + '<a href=' + linkItems + '>' + linkTitles + '</a></br>';
             contentBox[i].setAttribute("href", linkItems);
           }
         })
@@ -48,11 +46,12 @@ taskButton.addEventListener("click", function () {
 
 let saveMark = document.querySelectorAll(".btnSave").forEach(item => {
   item.addEventListener("click", e => {
-    var link = e.target.nextElementSibling.getAttribute("href");
-    var title = e.target.nextElementSibling.text;
+    var link = e.target.parentElement.firstElementChild.getAttribute("href");
+    var title = e.target.parentElement.firstElementChild.textContent;
+    console.log(title);
+    console.log(link);
     book.push({
-      link,
-      title,
+      link
     });
     localStorage.setItem("bookmarked", JSON.stringify(book));
     console.log("works");
