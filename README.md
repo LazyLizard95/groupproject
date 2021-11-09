@@ -1,4 +1,4 @@
-# ExcitME
+# ExciteME
 
 ## Project Description
 * Description - Provide inspiration to an individual that is looking for something new to do.  
