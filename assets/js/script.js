@@ -1,9 +1,7 @@
 window.onload = () => {
   const tab_switchers = document.querySelectorAll('[data-switcher]');
-  let displayText = document.querySelector("#displayText").textContent;
   let testGoogle = "";
   let taskButton = document.querySelector("#generate");
-  let taskContainer = document.querySelector("#contentContainer");
   let book = [];
 
   taskButton.addEventListener("click", function () {
@@ -17,7 +15,7 @@ window.onload = () => {
         document.getElementById("displayText").innerText = activity;
         activity.toLowerCase(); //converts activity AFTER its been appended for user. 
         let newStringArray = activity.split(' '); //converts activity string to an array
-        const bannedTerms = ['the', 'a', 'and', 'too', 'or', 'some', 'of', 'an', 'trip'];//terms that are checked for within the array so they can be removed for better search results
+        const bannedTerms = ['the', 'a', 'and', 'too', 'or', 'some', 'of', 'an', 'trip', 'on'];//terms that are checked for within the array so they can be removed for better search results
         newStringArray = newStringArray.filter(e => bannedTerms.includes(e) === false); //e represents all the elements in a list, => returns the values, e => bannedTerms.includes(e) === false is saying, do not return the elements if they are included in banned terms
         let cleanedSearch = newStringArray.toString(); //convert the array back to a string
 
