@@ -3,12 +3,11 @@ window.onload = () => {
   let testGoogle = "";
   let taskButton = document.querySelector("#generate");
   let book = [];
+  var markedTitle = [];
+  var activities = [];
+
   
-
   taskButton.addEventListener("click", function () {
-
-    // document.getElementById("contentContainer").style = "display: contents";
-
 
     testFetch = fetch('http://www.boredapi.com/api/activity/')
       .then(function (response) {
@@ -16,6 +15,8 @@ window.onload = () => {
       })
       .then(function (response) {
         activity = response.activity
+        activities.push(activity);
+        localStorage.setItem("bookmarkedActivity", JSON.stringify(activities));
         document.getElementById("displayText").innerText = activity;
         activity.toLowerCase(); //converts activity AFTER its been appended for user. 
         let newStringArray = activity.split(' '); //converts activity string to an array
@@ -39,7 +40,7 @@ window.onload = () => {
             for (i = 0; i < response.items.length; i++) {
               var linkItems = response.items[i].link;
               var linkTitles = response.items[i].title;
-              contentBox[i].innerHTML = '<br>' + '<a href=' + linkItems + '>' + linkTitles + '</a></br>';
+              contentBox[i].innerHTML = '<br>' + '<a href=' + linkItems + ' target="_blank">' + linkTitles + '</a></br>';
               contentBox[i].setAttribute("href", linkItems);
             }
 
@@ -54,10 +55,10 @@ window.onload = () => {
       var title = e.target.parentElement.firstElementChild.textContent;
       console.log(title);
       console.log(link);
-      book.push({
-        link
-      });
+      book.push(link);
+      markedTitle.push(title);
       localStorage.setItem("bookmarked", JSON.stringify(book));
+      localStorage.setItem("bookmarkedTitle", JSON.stringify(markedTitle));
       console.log("works");
     })
   })
@@ -87,14 +88,22 @@ function SwitchPage(page_id) {
 }
 
 
+var loadTask = function() { 
+
+  loadlinks = JSON.parse(localStorage.getItem("bookmarked"));
+  loadtitles = JSON.parse(localStorage.getItem("bookmarkedTitle"));
+  loadActivity = JSON.parse(localStorage.getItem("bookmarkedActivity"));
 
 
+  var bookcontain = document.querySelector(".bookCon");
 
+  for (i = 0; i < loadlinks.length; i++) {
+    var bookLink = document.createElement("tr");
+    var bookItem = loadlinks[i];
+    var bookTitle = loadtitles[i];
+    var bookAct =loadActivity;
+    bookLink.innerHTML = '<td>' + bookAct + '</td>' +'<td>' + '<a href=' + bookItem + ' target="_blank">' + bookTitle + "</a>" + '</td>';
+    bookcontain.append(bookLink);
+  }
+}
 
-
-
-//local past generated activity
-//points system
-//task completion streak
-//set options for type tasks checkboxes
-//add pages
