@@ -1,37 +1,43 @@
 .h1 {
-  font-family: 'scrabble', sans-serif;
-    font-size: 50px;
+  font-family: "scrabble", sans-serif;
+  font-size: 50px;
 }
 
 .bigContainer {
-    justify-content: center;
-    margin: auto;
-    width: 50%;
-    border: 3px solid;
-    padding: 10px;  
-    width: 800px;
-    max-width: 80%;
-    background-color: white;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 0 10px 2px;
-  }
-
-  .btn {
-    border-radius: 5px;
-    padding: 5px 10px;
-    color: blue;
-    outline: none;
-  }
-
-.pages .page { /*hides pages*/
-    display: none;
+  justify-content: center;
+  margin: auto;
+  width: 50%;
+  border: 3px solid;
+  padding: 10px;
+  width: 800px;
+  max-width: 80%;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px 2px;
 }
 
-.pages .page.is-active { /*properties for active pages*/
+.btn {
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: blue;
+  outline: none;
+}
+
+.pages .page {
+  /*hides pages*/
+  display: none;
+}
+
+.pages .page.is-active {
+  /*properties for active pages*/
   display: flex;
   align-items: center;
   align-content: center;
   flex-direction: column;
   column-gap: 20px;
+}
+
+#contentContainer {
+  display: none;
 }

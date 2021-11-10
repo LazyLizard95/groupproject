@@ -3,8 +3,12 @@ window.onload = () => {
   let testGoogle = "";
   let taskButton = document.querySelector("#generate");
   let book = [];
+  
 
   taskButton.addEventListener("click", function () {
+
+    // document.getElementById("contentContainer").style = "display: contents";
+
 
     testFetch = fetch('http://www.boredapi.com/api/activity/')
       .then(function (response) {
@@ -38,6 +42,8 @@ window.onload = () => {
               contentBox[i].innerHTML = '<br>' + '<a href=' + linkItems + '>' + linkTitles + '</a></br>';
               contentBox[i].setAttribute("href", linkItems);
             }
+
+            document.getElementById("contentContainer").style = "display: contents";
           })
       })
   });
