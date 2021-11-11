@@ -99,11 +99,28 @@ var loadTask = function() {
 
   for (i = 0; i < loadlinks.length; i++) {
     var bookLink = document.createElement("tr");
+    bookLink.setAttribute("id", [i]);
+    bookLink.classList.add('bookmarkTable');
+    let bookmarkBox = document.getElementsByClassName('bookmarkTable');
+            let bookmarkBoxId = [];
+            for (i = 0, len = bookmarkBox.length; i < len; i++) {
+              if (bookmarkBox[i].id != '') {
+                bookmarkBoxId.push(bookmarkBox[i].id);
+              }
+            }
+    console.log(bookmarkBox);
+    console.log(bookLink);
     var bookItem = loadlinks[i];
     var bookTitle = loadtitles[i];
-    var bookAct =loadActivity;
+    var bookAct = loadActivity;
     bookLink.innerHTML = '<td>' + bookAct + '</td>' +'<td>' + '<a href=' + bookItem + ' target="_blank">' + bookTitle + "</a>" + '</td>';
+    console.log(bookLink.innerText);
+    const errorCheck = 'undefined'
+    if (bookLink.innerText.indexOf(errorCheck) === -1){
     bookcontain.append(bookLink);
+    } else {console.log("link is undefined!")}
   }
 }
+
+
 
