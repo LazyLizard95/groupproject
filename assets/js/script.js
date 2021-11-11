@@ -99,9 +99,14 @@ var loadTask = function() {
 
   for (i = 0; i < loadlinks.length; i++) {
     var bookLink = document.createElement("tr");
-    bookLink.setAttribute("id", [i]);
-    bookLink.classList.add('bookmarkTable');
-    let bookmarkBox = document.getElementsByClassName('bookmarkTable');
+    bookLink.classList.add('bookmarkTable');//this adds a class so I can keep track of dynamic elements
+    childrenCounter = bookcontain.childElementCount; // this will count how many dynamic elements are inside the container
+    bookId = 1 + childrenCounter; // this takes the number of how many dynamic elements there are, then add one to it so the next id will always be unique
+    bookLink.setAttribute("id", bookId); // sets id attribute of elemenet using the number assigned in bookId
+    console.log(childrenCounter);
+    console.log(bookId);
+    
+    let bookmarkBox = document.getElementsByClassName('bookmarkTable'); //109 - 113 creates an array of the ids and checks them to see if theyre not duplicated. if they are itll come out as undefined
             let bookmarkBoxId = [];
             for (i = 0, len = bookmarkBox.length; i < len; i++) {
               if (bookmarkBox[i].id != '') {
@@ -115,8 +120,8 @@ var loadTask = function() {
     var bookAct = loadActivity;
     bookLink.innerHTML = '<td>' + bookAct + '</td>' +'<td>' + '<a href=' + bookItem + ' target="_blank">' + bookTitle + "</a>" + '</td>';
     console.log(bookLink.innerText);
-    const errorCheck = 'undefined'
-    if (bookLink.innerText.indexOf(errorCheck) === -1){
+    const errorCheck = 'undefined' //create variable for undefined strings
+    if (bookLink.innerText.indexOf(errorCheck) === -1){ //124-126 checks if undefined is in the text, anywhere at all, and if it is it wont append it.
     bookcontain.append(bookLink);
     } else {console.log("link is undefined!")}
   }
