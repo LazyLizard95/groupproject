@@ -129,10 +129,14 @@ var loadTask = function() {
 
 
 var pointsPage = function() {
-  var points = document.createElement("div");
-  loadActivity = JSON.parse(localStorage.getItem("bookmarkedActivity"));
-  points.innerHTML = "test";
-  var points2 = document.getElementById("points");
-  points2.append(loadActivity);
-  console.log(points);
+  loadActivity = JSON.parse(localStorage.getItem("bookmarked"));
+  var points = document.getElementById("points");
+  points.append(loadActivity.length);
+  if( loadActivity.length <= 2 ){
+    var points2 = "You are not excited";
+    document.getElementById("points").innerHTML = points2;
+  } if(loadActivity.length >= 2 && loadActivity.length <=7){
+    var points2 = "You are excited";
+    document.getElementById("points").innerHTML = points2;
+  }else{}
 }
