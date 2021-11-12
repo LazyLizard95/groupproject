@@ -89,23 +89,23 @@ function SwitchPage(page_id) {
 
 
 var loadTask = function() { 
-
+  
   loadlinks = JSON.parse(localStorage.getItem("bookmarked"));
   loadtitles = JSON.parse(localStorage.getItem("bookmarkedTitle"));
   loadActivity = JSON.parse(localStorage.getItem("bookmarkedActivity"));
-
+  childrenCounter = JSON.parse(localStorage.getItem("childrenCounter"));
 
   var bookcontain = document.querySelector(".bookCon");
-
+  childrenCounter = bookcontain.childElementCount;
   for (i = 0; i < loadlinks.length; i++) {
     var bookLink = document.createElement("tr");
     bookLink.classList.add('bookmarkTable');//this adds a class so I can keep track of dynamic elements
     childrenCounter = bookcontain.childElementCount; // this will count how many dynamic elements are inside the container
+    localStorage.setItem("childrenCounter", childrenCounter);
     bookId = 1 + childrenCounter; // this takes the number of how many dynamic elements there are, then add one to it so the next id will always be unique
     bookLink.setAttribute("id", bookId); // sets id attribute of elemenet using the number assigned in bookId
     console.log(childrenCounter);
     console.log(bookId);
-    
     let bookmarkBox = document.getElementsByClassName('bookmarkTable'); //109 - 113 creates an array of the ids and checks them to see if theyre not duplicated. if they are itll come out as undefined
             let bookmarkBoxId = [];
             for (i = 0, len = bookmarkBox.length; i < len; i++) {
@@ -113,6 +113,7 @@ var loadTask = function() {
                 bookmarkBoxId.push(bookmarkBox[i].id);
               }
             }
+    
     console.log(bookmarkBox);
     console.log(bookLink);
     var bookItem = loadlinks[i];
@@ -125,6 +126,7 @@ var loadTask = function() {
     bookcontain.append(bookLink);
     } else {console.log("link is undefined!")}
   }
+  
 }
 
 
