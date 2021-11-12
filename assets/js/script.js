@@ -8,7 +8,6 @@ window.onload = () => {
   var acting = "";
 
   taskButton.addEventListener("click", function () {
-    
     testFetch = fetch('https://www.boredapi.com/api/activity/')
       .then(function (response) {
         return response.json();
