@@ -2,9 +2,12 @@ window.onload = () => {
   const tab_switchers = document.querySelectorAll('[data-switcher]');
   let testGoogle = "";
   let taskButton = document.querySelector("#generate");
-  let book = [];
-  var markedTitle = [];
-  var activities = [];
+  
+  var book = JSON.parse(localStorage.getItem("bookmarked")) || [];
+  var markedTitle = JSON.parse(localStorage.getItem("bookmarkedTitle")) || [];
+  var activities = JSON.parse(localStorage.getItem("bookmarkedActivity")) || [];
+  var acting = "";
+
 
   
   taskButton.addEventListener("click", function () {
@@ -14,9 +17,8 @@ window.onload = () => {
         return response.json();
       })
       .then(function (response) {
-        activity = response.activity
-        activities.push(activity);
-        localStorage.setItem("bookmarkedActivity", JSON.stringify(activities));
+        activity = response.activity;
+        acting = response.activity;
         document.getElementById("displayText").innerText = activity;
         activity.toLowerCase(); //converts activity AFTER its been appended for user. 
         let newStringArray = activity.split(' '); //converts activity string to an array
@@ -57,6 +59,8 @@ window.onload = () => {
       console.log(link);
       book.push(link);
       markedTitle.push(title);
+      activities.push(acting);
+      localStorage.setItem("bookmarkedActivity", JSON.stringify(activities));
       localStorage.setItem("bookmarked", JSON.stringify(book));
       localStorage.setItem("bookmarkedTitle", JSON.stringify(markedTitle));
       console.log("works");
@@ -118,7 +122,7 @@ var loadTask = function() {
     console.log(bookLink);
     var bookItem = loadlinks[i];
     var bookTitle = loadtitles[i];
-    var bookAct = loadActivity;
+    var bookAct = loadActivity[i];
     bookLink.innerHTML = '<td>' + bookAct + '</td>' +'<td>' + '<a href=' + bookItem + ' target="_blank">' + bookTitle + "</a>" + '</td>';
     console.log(bookLink.innerText);
     const errorCheck = 'undefined' //create variable for undefined strings
