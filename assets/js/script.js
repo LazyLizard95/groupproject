@@ -2,17 +2,14 @@ window.onload = () => {
   const tab_switchers = document.querySelectorAll('[data-switcher]');
   let testGoogle = "";
   let taskButton = document.querySelector("#generate");
-  
   var book = JSON.parse(localStorage.getItem("bookmarked")) || [];
   var markedTitle = JSON.parse(localStorage.getItem("bookmarkedTitle")) || [];
   var activities = JSON.parse(localStorage.getItem("bookmarkedActivity")) || [];
   var acting = "";
 
-
-  
   taskButton.addEventListener("click", function () {
-
-    testFetch = fetch('http://www.boredapi.com/api/activity/')
+    
+    testFetch = fetch('https://www.boredapi.com/api/activity/')
       .then(function (response) {
         return response.json();
       })
@@ -55,23 +52,18 @@ window.onload = () => {
     item.addEventListener("click", e => {
       var link = e.target.parentElement.firstElementChild.getAttribute("href");
       var title = e.target.parentElement.firstElementChild.textContent;
-      console.log(title);
-      console.log(link);
       book.push(link);
       markedTitle.push(title);
       activities.push(acting);
       localStorage.setItem("bookmarkedActivity", JSON.stringify(activities));
       localStorage.setItem("bookmarked", JSON.stringify(book));
       localStorage.setItem("bookmarkedTitle", JSON.stringify(markedTitle));
-      console.log("works");
     })
   })
 
   for (let i = 0; i < tab_switchers.length; i++) {
     const tab_switcher = tab_switchers[i];
     const page_id = tab_switcher.dataset.tab;
-
-
 
     tab_switcher.addEventListener('click', () => {
       document.querySelector('.tabs .tab.is-active').classList.remove('is-active');
@@ -108,23 +100,17 @@ var loadTask = function() {
     localStorage.setItem("childrenCounter", childrenCounter);
     bookId = 1 + childrenCounter; // this takes the number of how many dynamic elements there are, then add one to it so the next id will always be unique
     bookLink.setAttribute("id", bookId); // sets id attribute of elemenet using the number assigned in bookId
-    console.log(childrenCounter);
-    console.log(bookId);
     let bookmarkBox = document.getElementsByClassName('bookmarkTable'); //109 - 113 creates an array of the ids and checks them to see if theyre not duplicated. if they are itll come out as undefined
-            let bookmarkBoxId = [];
-            for (i = 0, len = bookmarkBox.length; i < len; i++) {
-              if (bookmarkBox[i].id != '') {
-                bookmarkBoxId.push(bookmarkBox[i].id);
-              }
-            }
-    
-    console.log(bookmarkBox);
-    console.log(bookLink);
+    let bookmarkBoxId = [];
+    for (i = 0, len = bookmarkBox.length; i < len; i++) {
+      if (bookmarkBox[i].id != '') {
+        bookmarkBoxId.push(bookmarkBox[i].id);
+      }
+    }
     var bookItem = loadlinks[i];
     var bookTitle = loadtitles[i];
     var bookAct = loadActivity[i];
     bookLink.innerHTML = '<td>' + bookAct + '</td>' +'<td>' + '<a href=' + bookItem + ' target="_blank">' + bookTitle + "</a>" + '</td>';
-    console.log(bookLink.innerText);
     const errorCheck = 'undefined' //create variable for undefined strings
     if (bookLink.innerText.indexOf(errorCheck) === -1){ //124-126 checks if undefined is in the text, anywhere at all, and if it is it wont append it.
     bookcontain.append(bookLink);
