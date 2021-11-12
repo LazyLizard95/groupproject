@@ -128,4 +128,11 @@ var loadTask = function() {
 }
 
 
-
+var pointsPage = function() {
+  var points = document.createElement("div");
+  loadActivity = JSON.parse(localStorage.getItem("bookmarkedActivity"));
+  points.innerHTML = "test";
+  var points2 = document.getElementById("points");
+  points2.append(loadActivity);
+  console.log(points);
+}
