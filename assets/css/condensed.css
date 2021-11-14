@@ -1,27 +1,35 @@
 .h1 {
   font-family: "scrabble", sans-serif;
   font-size: 50px;
+  border-bottom: solid;
 }
 
-.bigContainer {
+.contentContainer {
+  border-bottom: 10px;
+}
+/*.bigContainer {
   justify-content: center;
   margin: auto;
   width: 50%;
-  border: 3px solid;
+  border: 0px;
   padding: 10px;
   width: 800px;
-  max-width: 80%;
+  max-width: 90%;
   background-color: white;
   border-radius: 5px;
   padding: 10px;
-  box-shadow: 0 0 10px 2px;
-}
+  box-shadow: 0 0 15px 5px;
+}*/
 
 .btn {
-  border-radius: 5px;
-  padding: 5px 10px;
-  color: blue;
+  display: flex;
+  border-radius: 20px;
+  padding: 20px 20px;
+  color: rgb(101, 148, 252);
   outline: none;
+  border: px;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .pages .page {
