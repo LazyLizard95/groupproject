@@ -2,14 +2,14 @@ window.onload = () => {
   const tab_switchers = document.querySelectorAll('[data-switcher]');
   let testGoogle = "";
   let taskButton = document.querySelector("#generate");
-  
+
   var book = JSON.parse(localStorage.getItem("bookmarked")) || [];
   var markedTitle = JSON.parse(localStorage.getItem("bookmarkedTitle")) || [];
   var activities = JSON.parse(localStorage.getItem("bookmarkedActivity")) || [];
   var acting = "";
 
 
-  
+
   taskButton.addEventListener("click", function () {
 
     testFetch = fetch('https://www.boredapi.com/api/activity/')
@@ -92,8 +92,8 @@ function SwitchPage(page_id) {
 }
 
 
-var loadTask = function() { 
-  
+var loadTask = function () {
+
   loadlinks = JSON.parse(localStorage.getItem("bookmarked"));
   loadtitles = JSON.parse(localStorage.getItem("bookmarkedTitle"));
   loadActivity = JSON.parse(localStorage.getItem("bookmarkedActivity"));
@@ -111,38 +111,37 @@ var loadTask = function() {
     console.log(childrenCounter);
     console.log(bookId);
     let bookmarkBox = document.getElementsByClassName('bookmarkTable'); //109 - 113 creates an array of the ids and checks them to see if theyre not duplicated. if they are itll come out as undefined
-            let bookmarkBoxId = [];
-            for (i = 0, len = bookmarkBox.length; i < len; i++) {
-              if (bookmarkBox[i].id != '') {
-                bookmarkBoxId.push(bookmarkBox[i].id);
-              }
-            }
-    
-    console.log(bookmarkBox);
-    console.log(bookLink);
+    let bookmarkBoxId = [];
+    for (i = 0, len = bookmarkBox.length; i < len; i++) {
+      if (bookmarkBox[i].id != '') {
+        bookmarkBoxId.push(bookmarkBox[i].id);
+      }
+    }
+
+
     var bookItem = loadlinks[i];
     var bookTitle = loadtitles[i];
     var bookAct = loadActivity[i];
-    bookLink.innerHTML = '<td>' + bookAct + '</td>' +'<td>' + '<a href=' + bookItem + ' target="_blank">' + bookTitle + "</a>" + '</td>';
+    bookLink.innerHTML = '<td>' + bookAct + '</td>' + '<td>' + '<a href=' + bookItem + ' target="_blank">' + bookTitle + "</a>" + '</td>';
     console.log(bookLink.innerText);
     const errorCheck = 'undefined' //create variable for undefined strings
-    if (bookLink.innerText.indexOf(errorCheck) === -1){ //124-126 checks if undefined is in the text, anywhere at all, and if it is it wont append it.
-    bookcontain.append(bookLink);
-    } else {console.log("link is undefined!")}
+    if (bookLink.innerText.indexOf(errorCheck) === -1) { //124-126 checks if undefined is in the text, anywhere at all, and if it is it wont append it.
+      bookcontain.append(bookLink);
+    } else { console.log("link is undefined!") }
   }
-  
+
 }
 
 
-var pointsPage = function() {
+var pointsPage = function () {
   loadActivity = JSON.parse(localStorage.getItem("bookmarked"));
   var points = document.getElementById("points");
   points.append(loadActivity.length);
-  if( loadActivity.length <= 2 ){
+  if (loadActivity.length <= 2) {
     var points2 = "You are not excited";
     document.getElementById("points").innerHTML = points2;
-  } if(loadActivity.length >= 2 && loadActivity.length <=7){
+  } if (loadActivity.length >= 2 && loadActivity.length <= 7) {
     var points2 = "You are excited";
     document.getElementById("points").innerHTML = points2;
-  }else{}
+  } else { }
 }
