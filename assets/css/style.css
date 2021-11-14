@@ -352,3 +352,11 @@ header ul li a:hover {
   color: white;
   background-color: var(--red);
 }
+
+.notExcited {
+  background-color: var(--red);
+}
+
+.excited {
+  background-color: var(--green);
+}

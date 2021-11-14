@@ -120,14 +120,18 @@ var loadTask = function() {
 
 
 var pointsPage = function() {
-  loadActivity = JSON.parse(localStorage.getItem("bookmarked"));
+  loadActivity = JSON.parse(localStorage.getItem("childrenCounter"));
   var points = document.getElementById("points");
-  points.append(loadActivity.length);
-  if( loadActivity.length <= 2 ){
-    var points2 = "You are not excited";
-    document.getElementById("points").innerHTML = points2;
-  } if(loadActivity.length >= 2 && loadActivity.length <=7){
-    var points2 = "You are excited";
-    document.getElementById("points").innerHTML = points2;
+  points.append(loadActivity);
+  if( loadActivity <= 5){
+    var points2 = "you are not excited";
+    document.getElementById("points").innerHTML = loadActivity + " points, " + points2;
+    document.getElementById("points").setAttribute("class", "notExcited");
+  } if(loadActivity > 5){
+    var points2 = "you are excited";
+    //$(points2).addClass("Excited");
+    document.getElementById("points").innerHTML = loadActivity + " points, " + points2;
+    document.getElementById("points").setAttribute("class", "excited");
   }else{}
 }
+
